@@ -1,0 +1,40 @@
+{
+    "preprocessing": {
+        "low_freq": 1.0,
+        "high_freq": 40.0,
+        "filter_order": 4,
+        "sample_rate": 500
+    },
+    "model": {
+        "temporal_filters": 32,
+        "spatial_multiplier": 2,
+        "dropout_rate": 0.3,
+        "channels": 6,
+        "samples": 500
+    },
+    "training": {
+        "batch_size": 64,
+        "learning_rate": 1e-3,
+        "weight_decay": 1e-4,
+        "epochs": 100,
+        "scheduler": "cosine",
+        "optimizer": "adamw",
+        "early_stopping_patience": 25,
+        "gpu_device": 0
+    },
+    "inference": {
+        "confidence_threshold": 0.7,
+        "smoothing_window": 5,
+        "hysteresis_count": 3,
+        "onnx_opset": 14
+    },
+    "feature_extraction": {
+        "freq_bands": {
+            "theta": [4, 8],
+            "alpha": [8, 13],
+            "mu": [8, 12],
+            "beta": [13, 30]
+        },
+        "welch_nperseg": 256
+    }
+}

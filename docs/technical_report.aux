@@ -1,0 +1,66 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}System Overview}{2}{section.1}\protected@file@percent }
+\newlabel{sec:overview}{{1}{2}{System Overview}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Dataset}{2}{section.2}\protected@file@percent }
+\newlabel{sec:dataset}{{2}{2}{Dataset}{section.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Class definitions and robot command mapping.}}{2}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:classes}{{1}{2}{Class definitions and robot command mapping}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Machine Learning Pipeline}{2}{section.3}\protected@file@percent }
+\newlabel{sec:ml}{{3}{2}{Machine Learning Pipeline}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Preprocessing}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:preprocessing}{{3.1}{2}{Preprocessing}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bandpass filter.}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Normalisation.}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Windowing.}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data splitting.}{2}{subsection.3.1}\protected@file@percent }
+\citation{lawhern2018eegnet}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Baseline Models}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:baselines}{{3.2}{3}{Baseline Models}{subsection.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Baseline classifier accuracy (\%).}}{3}{table.caption.2}\protected@file@percent }
+\newlabel{tab:baselines}{{2}{3}{Baseline classifier accuracy (\%)}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}EEGNet Architecture}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:eegnet}{{3.3}{3}{EEGNet Architecture}{subsection.3.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces EEGNet layer structure. $B$ = batch size.}}{3}{table.caption.3}\protected@file@percent }
+\newlabel{tab:architecture}{{3}{3}{EEGNet layer structure. $B$ = batch size}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Training Protocol}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:training}{{3.4}{4}{Training Protocol}{subsection.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Training hyperparameters.}}{4}{table.caption.4}\protected@file@percent }
+\newlabel{tab:hyperparams}{{4}{4}{Training hyperparameters}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Results}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:results}{{3.5}{4}{Results}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Binary Classification (Right Fist vs Left Fist)}{4}{subsubsection.3.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Binary EEGNet results (9,730 parameters, 100 epochs).}}{4}{table.caption.5}\protected@file@percent }
+\newlabel{tab:binary_results}{{5}{4}{Binary EEGNet results (9,730 parameters, 100 epochs)}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}Five-Class Classification}{4}{subsubsection.3.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Five-class EEGNet results (12,613 parameters, 93 epochs, early stopped).}}{4}{table.caption.6}\protected@file@percent }
+\newlabel{tab:5class_results}{{6}{4}{Five-class EEGNet results (12,613 parameters, 93 epochs, early stopped)}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Binary vs Multi-Class Decoding}{5}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:binary_vs_multi}{{3.6}{5}{Binary vs Multi-Class Decoding}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Temporal Context vs Instantaneous Prediction}{5}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:temporal}{{3.7}{5}{Temporal Context vs Instantaneous Prediction}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Confidence Thresholds and False-Trigger Suppression}{5}{subsection.3.8}\protected@file@percent }
+\newlabel{sec:confidence}{{3.8}{5}{Confidence Thresholds and False-Trigger Suppression}{subsection.3.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Confidence distribution statistics.}}{5}{table.caption.7}\protected@file@percent }
+\newlabel{tab:confidence}{{7}{5}{Confidence distribution statistics}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Model Complexity vs Inference Speed}{6}{subsection.3.9}\protected@file@percent }
+\newlabel{sec:latency}{{3.9}{6}{Model Complexity vs Inference Speed}{subsection.3.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces ONNX inference latency (ms), 1000 runs post-warmup.}}{6}{table.caption.8}\protected@file@percent }
+\newlabel{tab:latency}{{8}{6}{ONNX inference latency (ms), 1000 runs post-warmup}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.10}Limitations and Future Work}{6}{subsection.3.10}\protected@file@percent }
+\newlabel{sec:limitations}{{3.10}{6}{Limitations and Future Work}{subsection.3.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Simulation Bridge}{6}{section.4}\protected@file@percent }
+\newlabel{sec:simulation}{{4}{6}{Simulation Bridge}{section.4}{}}
+\bibcite{lawhern2018eegnet}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Backend Architecture}{7}{section.5}\protected@file@percent }
+\newlabel{sec:backend}{{5}{7}{Backend Architecture}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Frontend Dashboard}{7}{section.6}\protected@file@percent }
+\newlabel{sec:frontend}{{6}{7}{Frontend Dashboard}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}System Integration}{7}{section.7}\protected@file@percent }
+\newlabel{sec:integration}{{7}{7}{System Integration}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{7}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{7}{Conclusion}{section.8}{}}
+\gdef \@abspage@last{7}

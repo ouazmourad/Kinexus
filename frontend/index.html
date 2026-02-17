@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinexus Control Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title"><span>Kine</span>xus Control Dashboard</div>
+        <div class="connection-status">
+            <span id="conn-text">Disconnected</span>
+            <div class="status-dot" id="conn-dot"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="dashboard">
+
+        <!-- LEFT COLUMN TOP: Gear + Brain Decode -->
+        <div class="card gear-panel">
+            <div class="card-header">Gear State</div>
+            <div class="gear-display">
+                <div class="gear-label" id="gear-N">N</div>
+                <div class="gear-label" id="gear-F">F</div>
+                <div class="gear-label" id="gear-R">R</div>
+                <div class="gear-label" id="gear-O">O</div>
+            </div>
+            <div class="gear-text" id="gear-text">NEUTRAL</div>
+
+            <div class="card-header" style="margin-top: 16px;">Brain Decode</div>
+            <div class="brain-panel">
+                <div class="brain-class" id="brain-class">--</div>
+                <div class="confidence-bar-container">
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidence-fill"></div>
+                    </div>
+                    <div class="confidence-value" id="confidence-value">0%</div>
+                </div>
+                <div class="brain-info-row">
+                    <span><span class="brain-info-label">Cmd: </span><span id="brain-command">--</span></span>
+                    <span id="stable-badge" class="stable-badge stable">STABLE</span>
+                </div>
+                <div class="toggle-indicator" id="toggle-indicator"></div>
+            </div>
+
+            <div class="holding-indicator">
+                <div class="holding-icon" id="holding-icon">&#9633;</div>
+                <div class="holding-text" id="holding-text">Not holding</div>
+            </div>
+        </div>
+
+        <!-- CENTER TOP: Factory Map + Robot Position -->
+        <div class="card robot-view">
+            <div class="card-header">Factory Floor Map</div>
+            <div class="robot-canvas-container">
+                <canvas id="robot-canvas"></canvas>
+            </div>
+            <div class="nav-overlay" id="nav-overlay" style="display:none;">
+                <span class="nav-target" id="nav-target"></span>
+                <span class="nav-dist" id="nav-dist"></span>
+                <button class="nav-cancel-btn" onclick="cancelNav()">CANCEL</button>
+            </div>
+            <!-- Orchestration Overlay -->
+            <div class="orchestration-overlay" id="orchestration-overlay" style="display:none;">
+                <div class="orch-phase" id="orch-phase">SELECT ACTION</div>
+                <div class="orch-options" id="orch-options"></div>
+                <div class="orch-hint">L/R Fist: cycle | Both Fists 2s: confirm</div>
+            </div>
+            <!-- Cancel Confirmation Overlay -->
+            <div class="cancel-confirm-overlay" id="cancel-confirm-overlay" style="display:none;">
+                <div class="cancel-confirm-text" id="cancel-confirm-text">Cancel action?</div>
+                <div class="cancel-confirm-hint">Double-clench Both Fists again to confirm</div>
+                <div class="cancel-confirm-countdown" id="cancel-confirm-countdown"></div>
+            </div>
+            <div class="action-overlay idle" id="action-overlay">IDLE</div>
+        </div>
+
+        <!-- RIGHT COLUMN TOP: Command Log -->
+        <div class="card command-log-panel">
+            <div class="card-header">Command Log</div>
+            <div class="command-log" id="command-log"></div>
+        </div>
+
+        <!-- LEFT COLUMN BOTTOM: Metrics + Controls -->
+        <div class="card left-bottom">
+            <div class="card-header">Metrics</div>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-value" id="metric-latency">0</div>
+                    <div class="metric-label">Latency (ms)</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" id="metric-fps">10</div>
+                    <div class="metric-label">Loop (Hz)</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" id="metric-ticks">0</div>
+                    <div class="metric-label">Ticks</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" id="metric-source">--</div>
+                    <div class="metric-label">Source</div>
+                </div>
+            </div>
+
+            <div class="card-header" style="margin-top: 12px;">
+                Manual Controls
+                <span class="mode-badge" id="control-mode-badge" onclick="toggleControlMode()">DIRECT [M]</span>
+            </div>
+            <div class="manual-controls" id="manual-controls-grid"></div>
+        </div>
+
+        <!-- CENTER BOTTOM: EEG Waveform -->
+        <div class="card eeg-panel">
+            <div class="card-header">EEG Live Waveform (6 channels)</div>
+            <canvas id="eeg-canvas"></canvas>
+        </div>
+
+        <!-- RIGHT COLUMN BOTTOM: Voice Status + Debug -->
+        <div class="right-bottom-stack">
+            <div class="card voice-panel">
+                <div class="card-header">Voice Input</div>
+                <div class="voice-status">
+                    <div class="mic-indicator" id="mic-indicator"></div>
+                    <div class="mic-text" id="mic-text">Mic off</div>
+                    <button class="ctrl-btn" onclick="toggleMic()" style="margin-left:auto; padding: 6px 12px;">Toggle Mic</button>
+                </div>
+                <div class="last-transcript">
+                    <div class="label">Last heard:</div>
+                    <div id="last-transcript-text">--</div>
+                </div>
+                <div class="voice-transcript-list" id="transcript-list"></div>
+            </div>
+            <div class="card debug-panel">
+                <div class="card-header">Debug</div>
+                <div class="debug-controls">
+                    <button class="ctrl-btn active-toggle" id="btn-brain" onclick="toggleBrain()">BRAIN<span class="key-hint">On</span></button>
+                    <button class="ctrl-btn active-toggle" id="btn-voice" onclick="toggleVoice()">VOICE<span class="key-hint">On</span></button>
+                    <button class="ctrl-btn" id="btn-test-mode" onclick="toggleTestMode()">TEST EEG<span class="key-hint">Off</span></button>
+                    <button class="ctrl-btn active-toggle" id="btn-eeg-stream" onclick="toggleEEGStream()">EEG STREAM<span class="key-hint">On</span></button>
+                    <button class="ctrl-btn accent" onclick="sendFullReset()">FULL RESET</button>
+                </div>
+                <div class="card-header" style="margin-top: 10px;">Brain Simulator (hold to activate)</div>
+                <div class="brain-sim-controls">
+                    <button class="ctrl-btn sim-btn" data-cls="0"
+                        onmousedown="simBrainStart(0)" onmouseup="simBrainStop()" onmouseleave="simBrainStop()"
+                        ontouchstart="simBrainStart(0)" ontouchend="simBrainStop()">R.FIST<span class="key-hint">Rot R</span></button>
+                    <button class="ctrl-btn sim-btn" data-cls="1"
+                        onmousedown="simBrainStart(1)" onmouseup="simBrainStop()" onmouseleave="simBrainStop()"
+                        ontouchstart="simBrainStart(1)" ontouchend="simBrainStop()">L.FIST<span class="key-hint">Rot L</span></button>
+                    <button class="ctrl-btn sim-btn" data-cls="2"
+                        onmousedown="simBrainStart(2)" onmouseup="simBrainStop()" onmouseleave="simBrainStop()"
+                        ontouchstart="simBrainStart(2)" ontouchend="simBrainStop()">BOTH<span class="key-hint">Gear</span></button>
+                    <button class="ctrl-btn sim-btn" data-cls="3"
+                        onmousedown="simBrainStart(3)" onmouseup="simBrainStop()" onmouseleave="simBrainStop()"
+                        ontouchstart="simBrainStart(3)" ontouchend="simBrainStop()">TONGUE<span class="key-hint">Shift</span></button>
+                    <button class="ctrl-btn sim-btn" data-cls="4"
+                        onmousedown="simBrainStart(4)" onmouseup="simBrainStop()" onmouseleave="simBrainStop()"
+                        ontouchstart="simBrainStart(4)" ontouchend="simBrainStop()">RELAX<span class="key-hint">Idle</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deployment Footer -->
+    <div class="deploy-footer" id="deploy-footer">ThoughtLink v0.1 — Edge Server: loading... | Clients connected: 0</div>
+
+    <script src="components/eeg_chart.js?v=4"></script>
+    <script src="components/robot_view.js?v=4"></script>
+    <script src="components/voice_status.js?v=4"></script>
+    <script src="app.js?v=4"></script>
+</body>
+</html>

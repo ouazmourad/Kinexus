@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}System Overview}{2}{section.1}%
+\contentsline {section}{\numberline {2}Dataset}{2}{section.2}%
+\contentsline {section}{\numberline {3}Machine Learning Pipeline}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Preprocessing}{2}{subsection.3.1}%
+\contentsline {paragraph}{Bandpass filter.}{2}{subsection.3.1}%
+\contentsline {paragraph}{Normalisation.}{2}{subsection.3.1}%
+\contentsline {paragraph}{Windowing.}{2}{subsection.3.1}%
+\contentsline {paragraph}{Data splitting.}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Baseline Models}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}EEGNet Architecture}{3}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Training Protocol}{4}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Results}{4}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Binary Classification (Right Fist vs Left Fist)}{4}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Five-Class Classification}{4}{subsubsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.6}Binary vs Multi-Class Decoding}{5}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Temporal Context vs Instantaneous Prediction}{5}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Confidence Thresholds and False-Trigger Suppression}{5}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Model Complexity vs Inference Speed}{6}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Limitations and Future Work}{6}{subsection.3.10}%
+\contentsline {section}{\numberline {4}Simulation Bridge}{6}{section.4}%
+\contentsline {section}{\numberline {5}Backend Architecture}{7}{section.5}%
+\contentsline {section}{\numberline {6}Frontend Dashboard}{7}{section.6}%
+\contentsline {section}{\numberline {7}System Integration}{7}{section.7}%
+\contentsline {section}{\numberline {8}Conclusion}{7}{section.8}%

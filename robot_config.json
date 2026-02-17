@@ -1,0 +1,13 @@
+{
+  "robots": [
+    {"id": "robot_0", "x": 0.0, "y": 0.0, "orientation": 0.0, "color": "#3b82f6"},
+    {"id": "robot_1", "x": -3.0, "y": 3.0, "orientation": 1.57, "color": "#22c55e"},
+    {"id": "robot_2", "x": 3.0, "y": 3.0, "orientation": -1.57, "color": "#f97316"}
+  ],
+  "map_boundaries": {
+    "min_x": -7.5,
+    "max_x": 7.5,
+    "min_y": -5.5,
+    "max_y": 7.5
+  }
+}
